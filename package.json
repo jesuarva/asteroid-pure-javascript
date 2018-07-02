@@ -1,0 +1,12 @@
+{
+  "name": "asteroids-pure-js",
+  "version": "1.0.0",
+  "main": "asteroids.js",
+  "repository": "https://github.com/jesuarva/asteroid-pure-javascript/tree/master",
+  "author": "Wladimir Fraga y Jean S Ariza",
+  "license": "MIT",
+  "private": null,
+  "scripts": {
+    "start": "node asteroids.js"
+  }
+}
