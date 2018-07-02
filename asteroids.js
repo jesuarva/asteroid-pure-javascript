@@ -12,5 +12,5 @@ const level = {
 // const game = new Game(canvas);
 
 console.log({ canvas });
-console.log(level[3]);
+console.log(Level);
 // merge

@@ -39,14 +39,18 @@
   </center>
   <canvas id="asteroids" width="480" height="320"></canvas>
 
-  <script src="classes/Canvas.js"></script>
-  <script src="classes/Game.js"></script>
-  <script src="classes/Sprite.js"></script>
-  <script src="classes/Ship.js"></script>
-  <script src="classes/Bullet.js"></script>
-  <script src="classes/Asteroid.js"></script>
-  <script src="classes/Level.js"></script>
-  <script src="asteroids.js"></script>
+  <script type="text/javascript">
+    const resources = ["classes/Canvas.js", "classes/Game.js", "classes/Sprite.js", "classes/Ship.js",
+      "classes/Bullet.js", "classes/Asteroid.js", "classes/Level.js", "asteroids.js"
+    ];
+    resources.forEach(async (resource) => {
+      var s = document.createElement('script');
+      s.type = "text/javascript";
+      await (s.src = resource); // file contains alert("hello!");
+      document.body.appendChild(s);
+      console.log("appended");
+    })
+  </script>
 </body>
 
 </html>

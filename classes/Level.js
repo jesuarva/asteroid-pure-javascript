@@ -6,3 +6,5 @@ class Level {
     const asteroidBaseSpeed = _asteroidBaseSpeed;
   }
 }
+
+console.log('LEVEL CLASS');
