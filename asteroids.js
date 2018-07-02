@@ -14,3 +14,10 @@ const level = {
 console.log({ canvas });
 console.log(Level);
 // merge
+
+const game = new Game(canvas);
+const nave = new Sprite(50, 50);
+
+game.setGameEntity(nave);
+console.log({ game });
+game.render();

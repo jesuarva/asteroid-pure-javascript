@@ -1,15 +1,20 @@
 class Sprite {
-  constructor(x, y) {
-    let y = y;
-    let speedX = 0;
-    let speedY = 0;
-    let x = x;
-    let angle = 0;
-    const shape = [];
-    let darkSide = true;
+  constructor(_x, _y) {
+    this.x = _x;
+    this.y = _y;
+    this.speedX = 0;
+    this.speedY = 0;
+    this.angle = 0;
+    this.shape = [];
+    this.darkSide = true;
   }
-  draw() {
+  draw(ctx) {
     //shape.forEach((point) => {})
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, 10, 0, Math.PI * 2, false);
+    ctx.fillStyle = '#0095dd';
+    ctx.fill();
+    ctx.closePath();
   }
   move() {
     x += speedX;
