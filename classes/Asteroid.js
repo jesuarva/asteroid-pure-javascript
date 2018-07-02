@@ -1,12 +1,12 @@
 class Asteroid extends Sprite {
-  constructor(x,y, scale) {
-    super(x,y);
-    this.scale = scale;
+  constructor(x, y, scale) {
+    super(x, y);
+    const scale = scale;
   }
   explode() {
-    console.log("Asteroid explode");
+    console.log('Asteroid explode');
   }
-  divideInSeveral(){
-    console.log("Divide in three");
+  divideInSeveral() {
+    console.log('Divide in three');
   }
 }

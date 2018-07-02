@@ -5,14 +5,14 @@ class Sprite {
     let speedY = 0;
     let x = x;
     let angle = 0;
-    shape = [];
-    darkSide = true;
+    const shape = [];
+    let darkSide = true;
   }
   draw() {
     //shape.forEach((point) => {})
-  };
+  }
   move() {
     x += speedX;
     x += speedX;
-  };
+  }
 }
