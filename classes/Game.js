@@ -8,10 +8,7 @@ class Game extends Canvas {
     this.gameEntities = [];
   }
   render() {
-    // this.drawEntity();
-    console.log(this.lives);
-    this.lives = 10;
-    console.log(this.lives);
+    this.drawEntity();
   }
   detectColisions() {
     console.log('Boom');
@@ -20,12 +17,14 @@ class Game extends Canvas {
     this.currentLevel = level;
   }
   setGameEntity(sprite) {
-    // console.log(gameEntities);
-    // this.gameEntities.push(sprite);
+    console.log({ sprite });
+    this.gameEntities.push(sprite);
   }
   drawEntity() {
-    // this.gameEntities.forEach(entity => {
-    //   entity.draw(this.ctx);
-    // });
+    this.gameEntities.forEach(entity => {
+      console.log(Object.keys(entity));
+      console.log(entity.draw);
+      entity.draw(this.ctx);
+    });
   }
 }

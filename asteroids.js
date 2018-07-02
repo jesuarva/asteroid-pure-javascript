@@ -8,6 +8,11 @@ const level = {
   3: new Level(3, 10, 5, 7),
   4: new Level(4, 13, 8, 9),
 };
+const shapeList = {
+  goodShip: [[20, 20], [20, 30], [30, 25]],
+  badShip: [],
+  bullet: [],
+};
 
 // const game = new Game(canvas);
 
@@ -16,7 +21,7 @@ console.log(Level);
 // merge
 
 const game = new Game(canvas);
-const nave = new Sprite(50, 50);
+const nave = new Sprite(50, 50, shapeList.goodShip);
 
 game.setGameEntity(nave);
 console.log({ game });
