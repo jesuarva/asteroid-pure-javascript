@@ -5,7 +5,10 @@ class Game extends Canvas {
     this.currentLevel = null;
     this.lives = 3;
     this.highScore = 0;
-    this.gameEntities = [];
+    this.gameBulletEntities = [[], []];
+    this.gameAsteroidEntities = [];
+    this.badShip = '';
+    this.goodShip = '';
   }
   render() {
     // console.log(this.ctx);
@@ -19,7 +22,7 @@ class Game extends Canvas {
   currentLevel(level) {
     this.currentLevel = level;
   }
-  setGameEntity(sprite) {
+  gameAsteroidEntities(sprite) {
     console.log({ sprite });
     this.gameEntities.push(sprite);
   }
@@ -32,9 +35,8 @@ class Game extends Canvas {
   }
   setNewState() {
     const ship = this.gameEntities[0];
-    console.log(ship);
-    ship.speedX = 2;
-    ship.speedY = 3;
+    const asteroid = this.gameEntities[1];
     ship.move();
+    asteroid.move();
   }
 }

@@ -1,6 +1,6 @@
 class Asteroid extends Sprite {
-  constructor(x, y, scale) {
-    super(x, y);
+  constructor(x, y, shape, scale) {
+    super(x, y, shape);
     this.scale = scale;
   }
   explode() {

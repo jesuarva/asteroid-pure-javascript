@@ -25,4 +25,8 @@ class Sprite {
     this.x += this.speedX;
     this.y += this.speedY;
   }
+  setSpeed(speedX, speedY) {
+    this.speedX = speedX;
+    this.speedY = speedY;
+  }
 }
