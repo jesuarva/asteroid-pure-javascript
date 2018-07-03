@@ -53,6 +53,8 @@ class Game extends Canvas {
      */
     const handleSpeed = modifierValue => {
       const currentSpeed = this.goodShip.speedY;
+      const nextSpeed = currentSpeed + modifierValue;
+      -this.goodShip.setSpeed(0, nextSpeed);
       console.log(this, 'handleSpeed', currentSpeed);
     };
     const hanldeAngle = modifierValue => {
@@ -80,7 +82,7 @@ class Game extends Canvas {
         break;
     }
 
-    this.goodShip.setSpeed(0, 0);
+    // this.goodShip.setSpeed(0, 0);
     this.goodShip.setRotation(0);
     // this.goodShip.setAngle(10);
   }
