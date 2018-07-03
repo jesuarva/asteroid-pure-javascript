@@ -3,7 +3,7 @@ class Sprite {
     this.x = x;
     this.y = y;
     this.centerX = 0;
-    this.centery = 0;
+    this.centerY = 0;
     this.speedX = 0;
     this.speedY = 0;
     this.angle = 0;
