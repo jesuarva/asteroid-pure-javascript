@@ -46,33 +46,37 @@ class Game extends Canvas {
     document.addEventListener('keydown', e => this.handleKeyPress(e, keyAndPropertiesToSet));
   }
   handleKeyPress(e, keyAndPropertiesToSet) {
-    const newValue = keyAndPropertiesToSet[e.keyCode];
+    const modifierValue = keyAndPropertiesToSet[e.keyCode];
 
     /**
      * KEY HANDLERS
      */
-    const handleSpeed = newValue => {
+    const handleSpeed = modifierValue => {
       const currentSpeed = this.goodShip.speedY;
       console.log(this, 'handleSpeed', currentSpeed);
     };
-    const hanldeAngle = newValue => {
-      console.log(newValue);
+    const hanldeAngle = modifierValue => {
       const currentAngle = this.goodShip.angle;
-      this.goodShip.setAngle(currentAngle + newValue);
-      console.log(this.goodShip.angle);
+
+      (this.goodShip.incrementAngleBy >= 20 && modifierValue > 0) ||
+      (this.goodShip.incrementAngleBy <= -20 && modifierValue < 0)
+        ? this.goodShip.incrementAngleBy
+        : (this.goodShip.incrementAngleBy = this.goodShip.incrementAngleBy + modifierValue * 2);
+
+      console.log(modifierValue, this.goodShip.incrementAngleBy);
+      this.goodShip.setAngle(currentAngle + this.goodShip.incrementAngleBy);
     };
 
     /**
      * EVENT LOGIC
      */
     switch (e.keyCode) {
-      case 38:
-        handleSpeed(newValue, this);
+      case 38: // ArrowUp
+        handleSpeed(modifierValue);
         break;
-      case 37:
-      case 39:
-        hanldeAngle(newValue);
-        hanldeAngle(newValue);
+      case 37: // ArrowLeft
+      case 39: // ArrowRight
+        hanldeAngle(modifierValue);
         break;
     }
 

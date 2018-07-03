@@ -7,6 +7,7 @@ class Sprite {
     this.speedX = 0;
     this.speedY = 0;
     this.angle = 0;
+    this.incrementAngleBy = 0;
     this.rotation = 0;
     this.shape = shape;
     this.darkSide = true;
