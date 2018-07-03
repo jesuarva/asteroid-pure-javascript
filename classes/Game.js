@@ -12,9 +12,9 @@ class Game extends Canvas {
   }
   render() {
     this.ctx.clearRect(0, 0, this.width, this.height);
+    this.setNewState();
     this.drawGoodShip();
     this.drawAsteroids();
-    this.setNewState();
   }
   detectColisions() {
     console.log('Boom');

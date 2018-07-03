@@ -3,7 +3,7 @@ class Sprite {
     this.x = x;
     this.y = y;
     this.centerX = 0;
-    this.centery = 0;
+    this.centerY = 0;
     this.speedX = 0;
     this.speedY = 0;
     this.angle = 0;
@@ -18,28 +18,53 @@ class Sprite {
 
     const radians = this.angle * (Math.PI / 180);
 
-    let dx = this.x - this.centerX;
-    let dy = this.y - this.centerY;
-
     ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(0,300);
+    ctx.lineTo(800,300);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(400,0);
+    ctx.lineTo(400,600);
+    ctx.stroke();
     ctx.setTransform(1, 0, 0, 1, 400, 300);
     ctx.rotate(radians);
     ctx.beginPath();
-    ctx.moveTo(this.shape[0][0] / this.scale + dx, this.shape[0][1] / this.scale + dy);
+    ctx.moveTo(this.shape[0][0], this.shape[0][1]);
     for (let i = 1; i < length; ++i) {
-      ctx.lineTo(this.shape[i][0] / this.scale + dx, this.shape[i][1] / this.scale + dy);
+      ctx.lineTo(this.shape[i][0], this.shape[i][1]);
     }
     ctx.closePath();
     ctx.stroke();
     ctx.restore();
   }
   move(maxX, maxY) {
-    this.x += this.speedX;
-    this.y += this.speedY;
-    if (this.x > maxX) this.x = 0;
-    if (this.y > maxY) this.y = 0;
-    if (this.x < 0) this.x = maxX;
-    if (this.y < 0) this.y = maxY;
+    let counter = 1 ;
+    this.shape.forEach(point => {
+      console.log("centerX : ", this.shape.length);
+      console.log("counter : ", counter);
+      // this.centerX+=this.speedX;
+      // this.centerY+=this.speedY;
+      this.x = this.speedX;
+      this.y = this.speedY;
+      let dx = this.x - this.speedX;
+      let dy = this.y - this.speedY;
+      point[0] = point[0] + this.speedX;
+      point[1] = point[1] + this.speedY;
+      if (point[0] > maxX/2 ){
+        counter++;
+        if(counter > this.shape.length)
+          this.shape.forEach(point => point[0]-=maxX);
+      }
+      if (point[1] > maxY/2 ){
+        counter++;
+        if(counter > this.shape.length)
+          this.shape.forEach(point => point[1]-=(maxY+120));
+      }
+      // if (point[1] > maxY) point[1] = 0;
+      // if (point[0] < 0) point[0] = maxX;
+      // if (point[1] < 0) point[1] = maxY;
+    });
     this.rotate();
   }
   rotate() {
@@ -51,6 +76,14 @@ class Sprite {
   setCenter(x, y) {
     this.centerX = x / this.scale;
     this.centerY = y / this.scale;
+    this.shape.forEach(point => {
+      point[0] = point[0] - this.centerX;
+      point[1] = point[1] - this.centerY;
+      // if (this.centerX > maxX/2 ) point[0] = 0;
+      // if (point[1] > maxY) point[1] = 0;
+      // if (point[0] < 0) point[0] = maxX;
+      // if (point[1] < 0) point[1] = maxY;
+    });
   }
   setSpeed(speedX, speedY) {
     this.speedX = speedX;
