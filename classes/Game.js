@@ -40,4 +40,44 @@ class Game extends Canvas {
     this.goodShip.move(this.width, this.height);
     this.asteroids.forEach(asteroid => asteroid.move(this.width, this.height));
   }
+  setListeners(keyAndPropertiesToSet) {
+    console.log('Events listeners');
+    console.log(keyAndPropertiesToSet);
+    document.addEventListener('keydown', e => this.handleKeyPress(e, keyAndPropertiesToSet));
+  }
+  handleKeyPress(e, keyAndPropertiesToSet) {
+    const newValue = keyAndPropertiesToSet[e.keyCode];
+
+    /**
+     * KEY HANDLERS
+     */
+    const handleSpeed = newValue => {
+      const currentSpeed = this.goodShip.speedY;
+      console.log(this, 'handleSpeed', currentSpeed);
+    };
+    const hanldeAngle = newValue => {
+      console.log(newValue);
+      const currentAngle = this.goodShip.angle;
+      this.goodShip.setAngle(currentAngle + newValue);
+      console.log(this.goodShip.angle);
+    };
+
+    /**
+     * EVENT LOGIC
+     */
+    switch (e.keyCode) {
+      case 38:
+        handleSpeed(newValue, this);
+        break;
+      case 37:
+      case 39:
+        hanldeAngle(newValue);
+        hanldeAngle(newValue);
+        break;
+    }
+
+    this.goodShip.setSpeed(0, 0);
+    this.goodShip.setRotation(0);
+    // this.goodShip.setAngle(10);
+  }
 }

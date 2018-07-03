@@ -9,24 +9,32 @@ const level = {
   4: new Level(4, 13, 8, 9),
 };
 const shapeList = {
-  goodShip: [[0, 0], [20, 0], [10, -30]],
+  goodShip: [[0, 0], [20, 0], [10, 30]],
   badShip: [],
   bullet: [[0, 0], [10]],
   asteroid_1: [[30, 0], [130, 0], [120, 50], [140, 100], [100, 90], [110, 120], [30, 115], [30, 80], [0, 30]],
+};
+const eventKeyDownPoperties = {
+  32: null, // SpaceKey => ''
+  37: -1, // ArrowLeft => rotateCounterClockwise
+  38: 0.1, // ArrowUp => incrementspeed
+  39: 1, // ArrowRight => rotateClockwise
+  40: null, // ArrowDown => ''
 };
 
 // const game = new Game(canvas);
 
 console.log({ canvas });
 console.log(Level);
-// merge
 
 const game = new Game(canvas);
+// EVENT LISTENERS
+game.setListeners(eventKeyDownPoperties);
 const goodShip = new Ship(0, 0, shapeList.goodShip);
 
 goodShip.setCenter(10, -15);
 goodShip.setAngle(20);
-goodShip.setRotation(2);
+goodShip.setRotation(10);
 
 const asteroid1 = new Asteroid(20, 20, shapeList.asteroid_1, 1);
 asteroid1.setSpeed(0, 1);
