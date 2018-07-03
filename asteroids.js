@@ -9,10 +9,10 @@ const level = {
   4: new Level(4, 13, 8, 9),
 };
 const shapeList = {
-  goodShip: [[20, 20], [20, 30], [30, 25]],
+  goodShip: [[0, 0], [20, 0], [10, -30]],
   badShip: [],
   bullet: [[0, 0], [10]],
-  asteroid_1: [[0, 0], [0.2], [10, 30], [40, 30], [40, 20], [42, 25], [50, 10]],
+  asteroid_1: [[30, 0], [130, 0], [120, 50], [140, 100], [100, 90], [110, 120], [30, 115], [30, 80], [0, 30]],
 };
 
 // const game = new Game(canvas);
@@ -22,13 +22,28 @@ console.log(Level);
 // merge
 
 const game = new Game(canvas);
-const nave = new Sprite(50, 50, shapeList.goodShip);
-nave.setSpeed(2, 3);
-const asteroid = new Asteroid(100, 100, shapeList.asteroid_1, 1);
-asteroid.setSpeed(-1, 5);
+const goodShip = new Ship(0, 0, shapeList.goodShip);
 
-game.setGameEntity(nave);
-game.setGameEntity(asteroid);
+goodShip.setCenter(10, -15);
+goodShip.setAngle(20);
+goodShip.setRotation(2);
+
+
+const asteroid1 =  new Asteroid(20, 20, shapeList.asteroid_1, 1);
+asteroid1.setSpeed(0, 1);
+asteroid1.setCenter(70, 60);
+
+const asteroid2 = new Asteroid(90, 40, shapeList.asteroid_1, 4);
+asteroid2.setSpeed(0.25, 1.25);
+asteroid2.setCenter(70, 60);
+asteroid2.setAngle(45);
+asteroid2.setRotation(0)
+
+game.setGoodShip(goodShip);
+game.setAsteroid(asteroid1);
+game.setAsteroid(asteroid2);
+
+
 console.log({ game });
 const render = game.render;
 setInterval(render.bind(game), 1000 / 30);

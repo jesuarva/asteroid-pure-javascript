@@ -5,15 +5,15 @@ class Game extends Canvas {
     this.currentLevel = null;
     this.lives = 3;
     this.highScore = 0;
-    this.gameBulletEntities = [[], []];
-    this.gameAsteroidEntities = [];
+    this.bullets = [[], []];
+    this.asteroids = [];
     this.badShip = '';
     this.goodShip = '';
   }
   render() {
-    // console.log(this.ctx);
     this.ctx.clearRect(0, 0, this.width, this.height);
-    this.drawEntity();
+    this.drawGoodShip();
+    this.drawAsteroids();
     this.setNewState();
   }
   detectColisions() {
@@ -22,21 +22,22 @@ class Game extends Canvas {
   currentLevel(level) {
     this.currentLevel = level;
   }
-  gameAsteroidEntities(sprite) {
-    console.log({ sprite });
-    this.gameEntities.push(sprite);
+  setAsteroid(sprite) {
+    this.asteroids.push(sprite);
   }
-  drawEntity() {
-    this.gameEntities.forEach(entity => {
-      console.log(Object.keys(entity));
-      console.log(entity.draw);
-      entity.draw(this.ctx);
+  setGoodShip(sprite) {
+    this.goodShip=sprite;
+  }
+  drawGoodShip() {
+      this.goodShip.draw(this.ctx,400,300);
+  }
+  drawAsteroids() {
+    this.asteroids.forEach(asteroid => {
+      asteroid.draw(this.ctx,10,20);
     });
   }
   setNewState() {
-    const ship = this.gameEntities[0];
-    const asteroid = this.gameEntities[1];
-    ship.move();
-    asteroid.move();
+    this.goodShip.move(this.width, this.height);
+    this.asteroids.forEach((asteroid) => asteroid.move(this.width, this.height))
   }
 }

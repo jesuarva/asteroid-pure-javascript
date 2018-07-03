@@ -1,6 +1,6 @@
 class Ship extends Sprite{
-  constructor(x,y){
-    super(x,y);
+  constructor(x, y, shape) {
+    super(x, y, shape);
   }
   shot() {
     console.log("Shot");
