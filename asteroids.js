@@ -25,4 +25,5 @@ const nave = new Sprite(50, 50, shapeList.goodShip);
 
 game.setGameEntity(nave);
 console.log({ game });
-game.render();
+const render = game.render;
+setInterval(render.bind(game), 1000 / 30);

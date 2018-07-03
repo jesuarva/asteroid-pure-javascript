@@ -8,7 +8,10 @@ class Game extends Canvas {
     this.gameEntities = [];
   }
   render() {
+    // console.log(this.ctx);
+    this.ctx.clearRect(0, 0, this.width, this.height);
     this.drawEntity();
+    this.setNewState();
   }
   detectColisions() {
     console.log('Boom');
@@ -26,5 +29,12 @@ class Game extends Canvas {
       console.log(entity.draw);
       entity.draw(this.ctx);
     });
+  }
+  setNewState() {
+    const ship = this.gameEntities[0];
+    console.log(ship);
+    ship.speedX = 2;
+    ship.speedY = 3;
+    ship.move();
   }
 }

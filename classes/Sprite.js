@@ -12,17 +12,17 @@ class Sprite {
     console.log(ctx);
     const length = this.shape.length;
     ctx.beginPath();
-    ctx.moveTo(this.shape[0][0], this.shape[0][1]);
+    ctx.moveTo(this.shape[0][0] + this.x, this.shape[0][1] + this.y);
     for (let i = 1; i < length; ++i) {
-      ctx.lineTo(this.shape[i][0], this.shape[i][1]);
+      ctx.lineTo(this.shape[i][0] + this.x, this.shape[i][1] + this.y);
       console.log('lineTo');
     }
-    ctx.lineTo(this.shape[0][0], this.shape[0][1]);
+    ctx.lineTo(this.shape[0][0] + this.x, this.shape[0][1] + this.y);
     ctx.stroke();
     ctx.closePath();
   }
   move() {
-    x += speedX;
-    x += speedX;
+    this.x += this.speedX;
+    this.y += this.speedY;
   }
 }
