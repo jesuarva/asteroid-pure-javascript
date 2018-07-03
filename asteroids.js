@@ -28,8 +28,7 @@ goodShip.setCenter(10, -15);
 goodShip.setAngle(20);
 goodShip.setRotation(2);
 
-
-const asteroid1 =  new Asteroid(20, 20, shapeList.asteroid_1, 1);
+const asteroid1 = new Asteroid(20, 20, shapeList.asteroid_1, 1);
 asteroid1.setSpeed(0, 1);
 asteroid1.setCenter(70, 60);
 
@@ -37,12 +36,11 @@ const asteroid2 = new Asteroid(90, 40, shapeList.asteroid_1, 4);
 asteroid2.setSpeed(0.25, 1.25);
 asteroid2.setCenter(70, 60);
 asteroid2.setAngle(45);
-asteroid2.setRotation(0)
+asteroid2.setRotation(0);
 
 game.setGoodShip(goodShip);
 game.setAsteroid(asteroid1);
 game.setAsteroid(asteroid2);
-
 
 console.log({ game });
 const render = game.render;

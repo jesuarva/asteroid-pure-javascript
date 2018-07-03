@@ -26,18 +26,18 @@ class Game extends Canvas {
     this.asteroids.push(sprite);
   }
   setGoodShip(sprite) {
-    this.goodShip=sprite;
+    this.goodShip = sprite;
   }
   drawGoodShip() {
-      this.goodShip.draw(this.ctx,400,300);
+    this.goodShip.draw(this.ctx, 400, 300);
   }
   drawAsteroids() {
     this.asteroids.forEach(asteroid => {
-      asteroid.draw(this.ctx,10,20);
+      asteroid.draw(this.ctx, 10, 20);
     });
   }
   setNewState() {
     this.goodShip.move(this.width, this.height);
-    this.asteroids.forEach((asteroid) => asteroid.move(this.width, this.height))
+    this.asteroids.forEach(asteroid => asteroid.move(this.width, this.height));
   }
 }
